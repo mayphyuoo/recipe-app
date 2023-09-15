@@ -5,7 +5,7 @@ import { Ingredient } from "./shared/ingredient.model";
 @Injectable()
 export class RecipeService {
     recipes: Recipe[] = [
-        new Recipe('Fried Egg',
+        new Recipe(1, 'Fried Egg',
             'A simple fried egg',
             'https://images.pexels.com/photos/6294391/pexels-photo-6294391.jpeg',
             [
@@ -13,7 +13,7 @@ export class RecipeService {
                 new Ingredient('Salt', 1),
                 new Ingredient('Pepper', 1),
             ]),
-            new Recipe('Fish and Chips',
+            new Recipe(2, 'Fish and Chips',
             'Classic fish and chips',
             'https://upload.wikimedia.org/wikipedia/commons/3/32/Modern_fish_and_chips_%288368723726%29.jpg',
             [
@@ -27,7 +27,16 @@ export class RecipeService {
 
     constructor() { }
 
-    addAccount(newRecipe: Recipe) {
+    addRecipe(newRecipe: Recipe) {
         this.recipes.push(newRecipe);
+    }
+
+    getRecipe(id: number) {
+        const recipe = this.recipes.find(
+            (r) => {
+                return r.id === id;
+            }
+        );
+        return recipe;
     }
 }

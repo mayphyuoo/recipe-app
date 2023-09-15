@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Recipe } from '../../recipe.model';
 import { RecipeService } from 'src/app/recipe.service';
 
@@ -11,9 +13,9 @@ export class RecipeItemComponent {
     @Input() recipe: Recipe;
     @Output() recipeIsSelected = new EventEmitter<Recipe>();
 
-    constructor(private recipeService: RecipeService) {}
+    constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) {}
 
-    onRecipeClicked() {
-        this.recipeService.recipeSelected.emit(this.recipe);
-    }
+    // onRecipeClicked() {
+    //     this.router.navigate([this.recipe.id], {relativeTo: this.route});
+    // }
 }
