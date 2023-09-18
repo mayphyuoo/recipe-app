@@ -1,4 +1,5 @@
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
+
 import { Recipe } from "./recipes/recipe.model";
 import { Ingredient } from "./shared/ingredient.model";
 
@@ -23,7 +24,6 @@ export class RecipeService {
                 new Ingredient('Tartare Sauce', 1),
             ]),
     ];
-    recipeSelected = new EventEmitter<Recipe>();
 
     constructor() { }
 
