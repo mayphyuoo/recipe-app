@@ -11,9 +11,10 @@ import { RecipeService } from 'src/app/recipe.service';
 })
 export class RecipeItemComponent {
     @Input() recipe: Recipe;
+    @Input() index: number;
     @Output() recipeIsSelected = new EventEmitter<Recipe>();
 
-    constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) {}
+    constructor() {}
 
     // onRecipeClicked() {
     //     this.router.navigate([this.recipe.id], {relativeTo: this.route});
