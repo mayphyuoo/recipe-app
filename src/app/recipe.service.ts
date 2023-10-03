@@ -9,27 +9,34 @@ import { Subject } from "rxjs";
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
 
-    recipes: Recipe[] = [
-        new Recipe('Fried Egg',
-            'A simple fried egg',
-            'https://images.pexels.com/photos/6294391/pexels-photo-6294391.jpeg',
-            [
-                new Ingredient('Egg', 2),
-                new Ingredient('Salt', 1),
-                new Ingredient('Pepper', 1),
-            ]),
-            new Recipe('Fish and Chips',
-            'Classic fish and chips',
-            'https://upload.wikimedia.org/wikipedia/commons/3/32/Modern_fish_and_chips_%288368723726%29.jpg',
-            [
-                new Ingredient('Barramundi', 2),
-                new Ingredient('French Fries', 20),
-                new Ingredient('Lemon', 1),
-                new Ingredient('Tartare Sauce', 1),
-            ]),
-    ];
+    // recipes: Recipe[] = [
+    //     new Recipe('Fried Egg',
+    //         'A simple fried egg',
+    //         'https://images.pexels.com/photos/6294391/pexels-photo-6294391.jpeg',
+    //         [
+    //             new Ingredient('Egg', 2),
+    //             new Ingredient('Salt', 1),
+    //             new Ingredient('Pepper', 1),
+    //         ]),
+    //         new Recipe('Fish and Chips',
+    //         'Classic fish and chips',
+    //         'https://upload.wikimedia.org/wikipedia/commons/3/32/Modern_fish_and_chips_%288368723726%29.jpg',
+    //         [
+    //             new Ingredient('Barramundi', 2),
+    //             new Ingredient('French Fries', 20),
+    //             new Ingredient('Lemon', 1),
+    //             new Ingredient('Tartare Sauce', 1),
+    //         ]),
+    // ];
+
+    private recipes: Recipe[] = [];
 
     constructor(private slService: ShoppinglistService) { }
+
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
     
     getRecipes() {
         return this.recipes.slice();
